@@ -1,87 +1,90 @@
 // Form section
 
-// const cityInput = document.querySelector("#cityInput")
-// const cityList = document.querySelector("#city-list")
-// const cityForm = document.querySelector("#city-form");
+const cityText = document.querySelector("#city-text")
+const cityList = document.querySelector("#city-list")
+const cityForm = document.querySelector("#city-form");
 
-// const cities = [];
-// // Creates cities in list
+let cities = [];
+// Creates cities in list
 
-// function renderCities() {
-//     // clears the cityInput element
-//     cityInput.innerHTML = "";
-
-
-
-//     // create a new li for each city entry
-//     for (var i = 0; i < cities.length; i++) {
-//         let city = cities[i];
-
-//         let li = document.createElement("li");
-//         li.textContent = city;
-//         li.setAttribute("data-index", i)
-//         cityList.appendChild(li);
-//     }
-// }
-
-// // The function  will run when the page loads.
-// function init() {
-//     // Get stored cities from localStorage
-//     let storedCities = JSON.parse(localStorage.getItem("cities"));
-
-//     // If cities were retrieved from localStorage, update the cites array to it
-//     if (storedCities !== null) {
-//         cities = storedCities;
-//     }
-
-//     // This is a helper function that will render cities to the DOM
-//     renderCities();
-// }
-
-// function storeCities() {
-//     // Stringify and set key in localStorage to cities array
-//     localStorage.setItem("cities", JSON.stringify(cities));
-// }
-
-// // Add submit event to form
-// cityForm.addEventListener("submit", function (event) {
-//     event.preventDefault();
-
-//     let cityText = cityInput.value.trim();
-
-//     // Return from function early if submitted cityText is blank
-//     if (cityText === "") {
-//         return;
-//     }
-
-//     // Add new cityText to cities array, clear the input
-//     cities.push(cityText);
-//     cityInput.value = "";
-
-//     // Store updated cities in localStorage, re-render the list
-//     storeCities();
-//     renderCities();
-// });
+function renderCities() {
+    // clears the cityInput element
+    cityText.innerHTML = "";
 
 
-// // Add click event to cityList element
-// cityList.addEventListener("click", function (event) {
-//     let element = event.target;
 
-//     // Checks if element is a button
-//     if (element.matches("button") === true) {
-//         // Get its data-index value and remove the city element from the list
-//         var index = element.parentElement.getAttribute("data-index");
-//         cities.splice(index, 1);
+    // create a new li for each city entry
+    for (var i = 0; i < cities.length; i++) {
+        let city = cities[i];
 
-//         // Store updated cities in localStorage, re-render the list
-//         storeCities();
-//         renderCites();
-//     }
-// });
+        let btn = document.createElement("button");
+        btn.textContent = city;
 
-// // Calls init to retrieve data and render it to the page on load
-// init()
+        btn.setAttribute("data-index", i)
+        cityList.appendChild(btn);
+    }
+}
+
+// The function  will run when the page loads.
+function init() {
+    // Get stored cities from localStorage
+    let storedCities = JSON.parse(localStorage.getItem("cities"));
+
+    // If cities were retrieved from localStorage, update the cites array to it
+    if (storedCities !== null) {
+        cities = storedCities;
+    }
+
+    // This is a helper function that will render cities to the DOM
+    renderCities();
+}
+
+function storeCities() {
+    // Stringify and set key in localStorage to cities array
+    localStorage.setItem("cities", JSON.stringify(cities));
+}
+
+// Add submit event to form
+cityForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    console.log(event)
+
+    let city = cityText.value.trim();
+    console.log(city)
+
+    // Return from function early if submitted cityText is blank
+    if (city === "") {
+        return;
+    }
+
+    // Add new cityText to cities array, clear the input
+    cities.push(city);
+    cityText.value = "";
+
+    // Store updated cities in localStorage, re-render the list
+    storeCities();
+    renderCities();
+});
+
+
+// Add click event to cityList element
+cityList.addEventListener("click", function (event) {
+    let element = event.target;
+
+    // Checks if element is a button
+    if (element.matches("button") === true) {
+        // Get its data-index value and remove the city element from the list
+        var index = element.parentElement.getAttribute("data-index");
+        cities.splice(index, 1);
+
+        // Store updated cities in localStorage, re-render the list
+        storeCities();
+        renderCites();
+    }
+});
+
+// Calls init to retrieve data and render it to the page on load
+init()
 
 
 
@@ -185,42 +188,40 @@
 
 
 // 5 day forecast
-let future = document.querySelector("#future")
-function futureW() {
-    let requestUrl = 'https://api.weather.gov/zones/type/zoneId/forecast';
+// let future = document.querySelector("#future")
+// function futureW() {
+//     let requestUrl = 'https://api.weather.gov/zones/type/zoneId/forecast';
 
-    fetch(requestUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        // This returns the info and condenses it into an array with json
-        .then(function (data) {
-            //Using console.log to examine the data
-            console.log(data);
-            for (var i = 1; i < 6; i++) {
-                //Creating a h3 element and a p element
-                for (var i = 0; i < data.length; i++) {
-                    //Creating a h3 element and a p element
-                    let fDate = document.createElement('h4');
-                    let fTemp = document.createElement('p5');
-                    let fHum = document.createElement('p6');
+//     fetch(requestUrl)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         // This returns the info and condenses it into an array with json
+//         .then(function (data) {
+//             //Using console.log to examine the data
+//             console.log(data);
+//             for (var i = 1; i < 6; i++) {
+//                 //Creating a h3 element and a p element
+//                 for (var i = 0; i < data.length; i++) {
+//                     //Creating a h3 element and a p element
+//                     let fDate = document.createElement('h4');
+//                     let fTemp = document.createElement('p5');
+//                     let fHum = document.createElement('p6');
                     
 
 
-                    //Setting the text of the h3 element and p element.
-                    fDate.textContent = data[i].dt;
-                    fTemp.textContent = data[i].temperature;
-                    fHum.textContent = data[i].humidity;
+//                     //Setting the text of the h3 element and p element.
+//                     fDate.textContent = data[i].dt;
+//                     fTemp.textContent = data[i].temperature;
+//                     fHum.textContent = data[i].humidity;
 
-                    //Appending the dynamically generated html to the div associated with the id="users"
-                    //Append will attach the element as the bottom most child.
-                    usersContainer.append(fDate);
-                    usersContainer.append(fTemp);
-                    usersContainer.append(fHum);
+//                     //Appending the dynamically generated html to the div associated with the id="users"
+//                     //Append will attach the element as the bottom most child.
+//                     usersContainer.append(fDate);
+//                     usersContainer.append(fTemp);
+//                     usersContainer.append(fHum);
 
-                    future = document.createElement(future)
-                }
-            })
-}
-
-  
+//                     future = document.createElement(future)
+//                 }
+//             })
+// }
