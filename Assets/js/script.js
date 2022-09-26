@@ -142,11 +142,52 @@
 
 
 // UV Fetch Section
-let uv = document.querySelector("#UV")
+// let uv = document.querySelector("#UV")
 
 
-function getApi() {
-    var requestUrl = 'https://api.openuv.io/api/v1/uv';
+// function uvIndex() {
+//     var requestUrl = 'https://api.openuv.io/api/v1/uv';
+
+//     fetch(requestUrl)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         // This returns the info and condenses it into an array with json
+//         .then(function (data) {
+//             //Using console.log to examine the data
+//             console.log(data);
+//             for (var i = 0; i < data.length; i++) {
+//                 //Creating a h3 element and a p element
+//                 let uv = document.createElement('p4');
+
+//                 //Setting the text of the h3 element and p element.
+//                 uv.textContent = data[i].uvIndex;
+
+//                 //Appending the dynamically generated html to the div associated with the id="users"
+//                 //Append will attach the element as the bottom most child.
+//                 usersContainer.append(uv);
+
+//                 if (uv >= 0 && uv <= 2) {
+//                     uv.setAttribute("background-color", "#00D81D", "text", "black")
+//                 } else if (uv >= 3 && uv <= 5) {
+//                     uv.setAttribute("background-color", "#E6F52D", "text", "black")
+//                 } else if (uv >= 6 && uv <= 7) {
+//                     uv.setAttribute("background-color", "#F5912D", "text", "black")
+//                 } else if (uv >= 8 && uv <= 10) {
+//                     uv.setAttribute("background-color", "#F91616 ", "text", "black")
+//                 }
+//             }
+//         }
+//     }
+
+// fetchButton.addEventListener('click', getApi);
+
+
+
+// 5 day forecast
+let future = document.querySelector("#future")
+function futureW() {
+    let requestUrl = 'https://api.weather.gov/zones/type/zoneId/forecast';
 
     fetch(requestUrl)
         .then(function (response) {
@@ -156,28 +197,30 @@ function getApi() {
         .then(function (data) {
             //Using console.log to examine the data
             console.log(data);
-            for (var i = 0; i < data.length; i++) {
+            for (var i = 1; i < 6; i++) {
                 //Creating a h3 element and a p element
-                let uv = document.createElement('p4');
+                for (var i = 0; i < data.length; i++) {
+                    //Creating a h3 element and a p element
+                    let fDate = document.createElement('h4');
+                    let fTemp = document.createElement('p5');
+                    let fHum = document.createElement('p6');
+                    
 
-                //Setting the text of the h3 element and p element.
-                uv.textContent = data[i].uvIndex;
 
-                //Appending the dynamically generated html to the div associated with the id="users"
-                //Append will attach the element as the bottom most child.
-                usersContainer.append(uv);
+                    //Setting the text of the h3 element and p element.
+                    fDate.textContent = data[i].dt;
+                    fTemp.textContent = data[i].temperature;
+                    fHum.textContent = data[i].humidity;
 
-                if (uv >= 0 && uv <= 2) {
-                    uv.setAttribute("background-color", "#00D81D", "text", "black")
-                } else if (uv >= 3 && uv <= 5) {
-                    uv.setAttribute("background-color", "#E6F52D", "text", "black")
-                } else if (uv >= 6 && uv <= 7) {
-                    uv.setAttribute("background-color", "#F5912D", "text", "black")
-                } else if (uv >= 8 && uv <= 10) {
-                    uv.setAttribute("background-color", "#F91616 ", "text", "black")
+                    //Appending the dynamically generated html to the div associated with the id="users"
+                    //Append will attach the element as the bottom most child.
+                    usersContainer.append(fDate);
+                    usersContainer.append(fTemp);
+                    usersContainer.append(fHum);
+
+                    future = document.createElement(future)
                 }
-            }
-        }
-    }
+            })
+}
 
-fetchButton.addEventListener('click', getApi);
+  
