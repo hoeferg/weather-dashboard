@@ -16,15 +16,14 @@
 
     <section class="col-6 col-md-4">
         <h2>Search For a City</h2>
-        <form>
-            <div class="form-group">
-                <input type="city" class="form-control" id="cityInput" placeholder="Enter city name">
-            </div>
+        <form id="city-form" method="POST">
+            <label for="city-text">Add a City: </label>
+            <input type="text" placeholder="Enter city" name="city-text" id="city-text" />
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
 
         <div>
-            <h3>Previous cities searched</h3>
+            <h3 id = "city-list">Previous cities searched</h3>
             <p>No previous searches</p>
         </div>
     </section>
