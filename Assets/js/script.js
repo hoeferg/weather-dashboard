@@ -5,7 +5,7 @@ const cityList = document.querySelector("#city-list")
 const cityForm = document.querySelector("#city-form");
 
 const cityWeather = document.querySelector("#city-weather")
-const date = moment().format('L')
+// const date = moment().format('L')
 const fetchButton = document.querySelector(".fetch-button");
 let cityName = document.querySelector("#city-name")
 let temp = document.querySelector("#temp")
@@ -59,17 +59,17 @@ function storeCities() {
 cityForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let city = $(cityName)
-    let city = cityText.value.trim();
-    cityText = cityText.toLowerCase();
+    let cityText = document.querySelector("#city-text")
+    let cityName = cityText.value.trim();
+    cityName = cityName.toLowerCase();
 
     // Return from function early if submitted cityText is blank
-    if (city === "") {
+    if (cityName === "") {
         return;
     }
 
     // Add new cityText to cities array, clear the input
-    cities.push(city);
+    cities.push(cityName);
     cityText.value = "";
 
     // Store updated cities in localStorage, re-render the list
@@ -192,40 +192,40 @@ fetchButton.addEventListener('submit', getApi);
 
 
 // 5 day forecast
-let future = document.querySelector("#future")
-function futureW() {
-    let requestUrl = 'const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=09515eadd9b3171770ca63a546779557`;';
+// let future = document.querySelector("#future")
+// function futureW() {
+//     let requestUrl = 'const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=09515eadd9b3171770ca63a546779557`;';
 
-    fetch(requestUrl)
-        .then(function (response) {
-            return response.json();
-        })
-        // This returns the info and condenses it into an array with json
-        .then(function (data) {
-            //Using console.log to examine the data
-            console.log(data);
-            for (var i = 1; i < 6; i++) {
-                //Creating a h3 element and a p element
-                for (var i = 0; i < data.length; i++) {
-                    //Creating a h3 element and a p element
-                    let fDate = document.createElement('h4');
-                    let fTemp = document.createElement('p5');
-                    let fHum = document.createElement('p6');
+//     fetch(requestUrl)
+//         .then(function (response) {
+//             return response.json();
+//         })
+//         // This returns the info and condenses it into an array with json
+//         .then(function (data) {
+//             //Using console.log to examine the data
+//             console.log(data);
+//             for (var i = 1; i < 6; i++) {
+//                 //Creating a h3 element and a p element
+//                 for (var i = 0; i < data.length; i++) {
+//                     //Creating a h3 element and a p element
+//                     let fDate = document.createElement('h4');
+//                     let fTemp = document.createElement('p5');
+//                     let fHum = document.createElement('p6');
                     
 
 
-                    //Setting the text of the h3 element and p element.
-                    fDate.textContent = data[i].dt;
-                    fTemp.textContent = data[i].temperature;
-                    fHum.textContent = data[i].humidity;
+//                     //Setting the text of the h3 element and p element.
+//                     fDate.textContent = data[i].dt;
+//                     fTemp.textContent = data[i].temperature;
+//                     fHum.textContent = data[i].humidity;
 
-                    //Appending the dynamically generated html to the div associated with the id="users"
-                    //Append will attach the element as the bottom most child.
-                    usersContainer.append(fDate);
-                    usersContainer.append(fTemp);
-                    usersContainer.append(fHum);
+//                     //Appending the dynamically generated html to the div associated with the id="users"
+//                     //Append will attach the element as the bottom most child.
+//                     usersContainer.append(fDate);
+//                     usersContainer.append(fTemp);
+//                     usersContainer.append(fHum);
 
-                    future = document.createElement(future)
-                }
-            })
-}
+//                     future = document.createElement(future)
+//                 }
+//             })
+// }
