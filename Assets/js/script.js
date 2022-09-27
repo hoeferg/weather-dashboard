@@ -4,6 +4,17 @@ const cityText = document.querySelector("#city-text")
 const cityList = document.querySelector("#city-list")
 const cityForm = document.querySelector("#city-form");
 
+const cityWeather = document.querySelector("#city-weather")
+const date = moment().format('L')
+const fetchButton = document.querySelector(".fetch-button");
+let cityName = document.querySelector("#city-name")
+let temp = document.querySelector("#temp")
+let hum = document.querySelector("#humidity")
+let wind = document.querySelector("#wind")
+let uv = document.querySelector("#UV")
+
+let future = document.querySelector("#future")
+
 let cities = [];
 // Creates cities in list
 
@@ -47,10 +58,10 @@ function storeCities() {
 // Add submit event to form
 cityForm.addEventListener("submit", function (event) {
     event.preventDefault();
-    console.log(event)
 
+    let city = $(cityName)
     let city = cityText.value.trim();
-    console.log(city)
+    cityText = cityText.toLowerCase();
 
     // Return from function early if submitted cityText is blank
     if (city === "") {
@@ -96,51 +107,44 @@ init()
 
 
 
-// // fetch section
-// const cityWeather = document.querySelector("#city-weather")
-// const date = moment().format('L')
-// const fetchButton = document.querySelector("#fetch-button");
-// let cityName = document.querySelector("#city-name")
-// let temp = document.querySelector("#temp")
-// let hum = document.querySelector("#humidity")
-// let wind = document.querySelector("#wind")
-// let uv = document.querySelector("#UV")
-
-// function getApi() {
-//     var requestUrl = 'https://api.weather.gov/stations/[stationId/observations/current';
-
-//     fetch(requestUrl)
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         // This returns the info and condenses it into an array with json
-//         .then(function (data) {
-//             //Using console.log to examine the data
-//             console.log(data);
-//             for (var i = 0; i < data.length; i++) {
-//                 //Creating a h3 element and a p element
-//                 let cityName = document.createElement('h3');
-//                 let temp = document.createElement('p1');
-//                 let hum = document.createElement('p2');
-//                 let wind = document.createElement('p3');
+// fetch section
 
 
-//                 //Setting the text of the h3 element and p element.
-//                 cityName.textContent = data[i].cityName;
-//                 temp.textContent = data[i].temperature;
-//                 hum.textContent = data[i].humidity;
-//                 wind.textContent = data[i].wind;
+function getApi() {
+    var requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=09515eadd9b3171770ca63a546779557`;
 
-//                 //Appending the dynamically generated html to the div associated with the id="users"
-//                 //Append will attach the element as the bottom most child.
-//                 usersContainer.append(cityName);
-//                 usersContainer.append(temp);
-//                 usersContainer.append(hum);
-//                 usersContainer.append(wind);
-//             }
-//         });
-// }
-// fetchButton.addEventListener('click', getApi);
+    fetch(requestUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        // This returns the info and condenses it into an array with json
+        .then(function (data) {
+            //Using console.log to examine the data
+            console.log(data);
+            for (var i = 0; i < data.length; i++) {
+                //Creating a h3 element and a p element
+                let cityName = document.createElement('h3');
+                let temp = document.createElement('p1');
+                let hum = document.createElement('p2');
+                let wind = document.createElement('p3');
+
+
+                //Setting the text of the h3 element and p element.
+                cityName.textContent = data[i].cityName;
+                temp.textContent = data[i].temperature;
+                hum.textContent = data[i].humidity;
+                wind.textContent = data[i].wind;
+
+                //Appending the dynamically generated html to the div associated with the id="users"
+                //Append will attach the element as the bottom most child.
+                usersContainer.append(cityName);
+                usersContainer.append(temp);
+                usersContainer.append(hum);
+                usersContainer.append(wind);
+            }
+        });
+}
+fetchButton.addEventListener('submit', getApi);
 
 
 
