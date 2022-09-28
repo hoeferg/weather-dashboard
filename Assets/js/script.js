@@ -4,6 +4,7 @@ const cityText = document.querySelector("#city-text")
 const cityList = document.querySelector("#city-list")
 const cityForm = document.querySelector("#city-form");
 
+
 const cityWeather = document.querySelector("#city-weather")
 // const date = moment().format('L')
 const fetchButton = document.querySelector(".fetch-button");
@@ -90,7 +91,7 @@ cityList.addEventListener("click", function (event) {
 
         // Store updated cities in localStorage, re-render the list
         storeCities();
-        renderCites();
+        renderCities();
     }
 });
 
@@ -111,8 +112,9 @@ init()
 
 
 function getApi() {
+    cityName = cityText.value
     const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=09515eadd9b3171770ca63a546779557`;
-
+console.log(cityName)
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
@@ -130,12 +132,12 @@ function getApi() {
 
 
                 //Setting the text of the h3 element and p element.
-                cityName.textContent = data[i].cityName;
-                temp.textContent = data[i].temperature;
-                hum.textContent = data[i].humidity;
-                wind.textContent = data[i].wind;
+                
+                cityName.textContent = data.name;
+                temp.textContent = data.main.temp;
+                hum.textContent = data.main.humidity;
+                wind.textContent = data.wind.speed;
 
-                //Appending the dynamically generated html to the div associated with the id="users"
                 //Append will attach the element as the bottom most child.
                 usersContainer.append(cityName);
                 usersContainer.append(temp);
@@ -144,7 +146,7 @@ function getApi() {
             }
         });
 }
-fetchButton.addEventListener('submit', getApi);
+fetchButton.addEventListener('click', getApi);
 
 
 
