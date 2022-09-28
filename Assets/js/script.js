@@ -170,6 +170,7 @@ function geoApi() {
 fetchButton.addEventListener('click', function () {
     getApi();
     geoApi();
+    getWeather();
 });
 // UV Fetch Section
 // let uv = document.querySelector("#UV")
@@ -229,22 +230,27 @@ function getWeather(latitude, longitude) {
         .then(function (data) {
             //Using console.log to examine the data
             console.log(data);
+            dateFOne.textContent= data.list[0].dt;
             tempFOne.textContent = data.list[0].main.temp
             humFOne.textContent = data.list[0].main.humidity
             windFOne.textContent = data.list[0].wind.speed
 
+            dateFTwo.textContent= data.list[8].dt;
             tempFTwo.textContent = data.list[8].main.temp
             humFTwo.textContent = data.list[8].main.humidity
             windFTwo.textContent = data.list[8].wind.speed
 
+            dateFThree.textContent= data.list[16].dt;
             tempFThree.textContent = data.list[16].main.temp
             humFThree.textContent = data.list[16].main.humidity
             windFThree.textContent = data.list[16].wind.speed
 
+            dateFFour.textContent= data.list[24].dt;
             tempFFour.textContent = data.list[24].main.temp
             humFFour.textContent = data.list[24].main.humidity
             windFFour.textContent = data.list[24].wind.speed
 
+            dateFFive.textContent= data.list[32].dt;
             tempFFive.textContent = data.list[32].main.temp
             humFFive.textContent = data.list[32].main.humidity
             windFFive.textContent = data.list[32].wind.speed
