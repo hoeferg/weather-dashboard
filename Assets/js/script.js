@@ -172,6 +172,11 @@ fetchButton.addEventListener('click', function () {
     geoApi();
     getWeather();
 });
+
+btn.addEventListener('click', function () {
+    getApi();
+    geoApi();
+    getWeather();
 // UV Fetch Section
 // let uv = document.querySelector("#UV")
 
