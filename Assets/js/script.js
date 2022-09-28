@@ -3,10 +3,9 @@
 const cityText = document.querySelector("#city-text")
 const cityList = document.querySelector("#city-list")
 const cityForm = document.querySelector("#city-form");
-
+const date = document.querySelector("#date")
 
 const cityWeather = document.querySelector("#city-weather")
-// const date = moment().format('L')
 const fetchButton = document.querySelector(".fetch-button");
 let $cityName = document.querySelector("#city-name")
 let temp = document.querySelector("#temp")
@@ -128,13 +127,14 @@ function getApi() {
 
             //Setting the text of the h3 element and p element.
             console.log(data.name)
+            date.textContent= data.dt;
             $cityName.textContent = data.name;
             temp.textContent = data.main.temp + "degrees kelvin";
             hum.textContent = data.main.humidity + "%";
             wind.textContent = data.wind.speed + "MPH";
 
 
-
+            localStorage.setItem("date", (date.textContent))
             localStorage.setItem("cityName", (cityName.textContent));
             localStorage.setItem("temp", (temp.textContent));
             localStorage.setItem("hum", (hum.textContent));
@@ -274,38 +274,3 @@ function getWeather(latitude, longitude) {
 
         });
 }
-
-// let future = document.querySelector("#future")
-// function futureW() {
-//     let requestUrl = `https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&appid=09515eadd9b3171770ca63a546779557`
-
-//     fetch(requestUrl)
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         // This returns the info and condenses it into an array with json
-//         .then(function (data) {
-//             //Using console.log to examine the data
-//             console.log(data);
-//             //Creating a h3 element and a p element
-//             let fDate = document.createElement('h4');
-//             let fTemp = document.createElement('p5');
-//             let fHum = document.createElement('p6');
-
-
-
-//             //Setting the text of the h3 element and p element.
-//             fDate.textContent = data[i].dt;
-//             fTemp.textContent = data[i].temperature;
-//             fHum.textContent = data[i].humidity;
-
-//             //Appending the dynamically generated html to the div associated with the id="users"
-//             //Append will attach the element as the bottom most child.
-//             usersContainer.append(fDate);
-//             usersContainer.append(fTemp);
-//             usersContainer.append(fHum);
-
-//             future = document.createElement(future)
-//         }
-//             })
-// }
