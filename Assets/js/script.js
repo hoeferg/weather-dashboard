@@ -229,9 +229,45 @@ function getWeather(latitude, longitude) {
         .then(function (data) {
             //Using console.log to examine the data
             console.log(data);
-tempF.textContent= data.list[0].
+            tempFOne.textContent = data.list[0].main.temp
+            humFOne.textContent = data.list[0].main.humidity
+            windFOne.textContent = data.list[0].main.wind.speed
 
+            tempFTwo.textContent = data.list[8].main.temp
+            humFTwo.textContent = data.list[8].main.humidity
+            windFTwo.textContent = data.list[8].main.wind.speed
+
+            tempFThree.textContent = data.list[16].main.temp
+            humFThree.textContent = data.list[16].main.humidity
+            windFThree.textContent = data.list[16].main.wind.speed
+
+            tempFFour.textContent = data.list[24].main.temp
+            humFFour.textContent = data.list[24].main.humidity
+            windFFour.textContent = data.list[24].main.wind.speed
+
+            tempFFive.textContent = data.list[32].main.temp
+            humFFive.textContent = data.list[32].main.humidity
+            windFFive.textContent = data.list[32].main.wind.speed
             //Setting the text of the h3 element and p element.
+            localStorage.setItem("tempFOne", (cityName.textContent));
+            localStorage.setItem("humFOne", (hum.textContent));
+            localStorage.setItem("windFOne", (wind.textContent));
+
+            localStorage.setItem("tempFTwo", (cityName.textContent));
+            localStorage.setItem("humFTwo", (hum.textContent));
+            localStorage.setItem("windFTwo", (wind.textContent));
+
+            localStorage.setItem("tempFThree", (cityName.textContent));
+            localStorage.setItem("humFThree", (hum.textContent));
+            localStorage.setItem("windFThree", (wind.textContent));
+
+            localStorage.setItem("tempFFour", (cityName.textContent));
+            localStorage.setItem("humFFour", (hum.textContent));
+            localStorage.setItem("windFFour", (wind.textContent));
+
+            localStorage.setItem("tempFFive", (cityName.textContent));
+            localStorage.setItem("humFFive", (hum.textContent));
+            localStorage.setItem("windFFive", (wind.textContent));
 
             //Append will attach the element as the bottom most child.
 
