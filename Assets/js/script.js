@@ -75,7 +75,7 @@ cityForm.addEventListener("submit", function (event) {
     // Store updated cities in localStorage, re-render the list
     storeCities();
     renderCities();
-});
+})
 
 
 // Add click event to cityList element
@@ -92,7 +92,7 @@ cityList.addEventListener("click", function (event) {
         storeCities();
         renderCities();
     }
-});
+})
 
 // Calls init to retrieve data and render it to the page on load
 init()
@@ -112,7 +112,7 @@ init()
 
 function getApi() {
     cityName = cityText.value
-    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=09515eadd9b3171770ca63a546779557`;
+    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=09515eadd9b3171770ca63a546779557`
     console.log(cityName)
     fetch(requestUrl)
         .then(function (response) {
@@ -141,14 +141,14 @@ function getApi() {
             localStorage.setItem("wind", (wind.textContent));
             //Append will attach the element as the bottom most child.
 
-        });
+        })
 }
 
 
 
 function geoApi() {
     cityName = cityText.value
-    const requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=09515eadd9b3171770ca63a546779557`;
+    const requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=09515eadd9b3171770ca63a546779557`
 
     fetch(requestUrl)
         .then(function (response) {
@@ -159,8 +159,8 @@ function geoApi() {
         .then(function (data) {
             //Using console.log to examine the data
             console.log(data);
-            lat = data[0].lat
-            log = data[0].lon
+            lat = data[0].lat;
+            log = data[0].lon;
 
             getWeather(lat, log)
 
@@ -171,12 +171,13 @@ fetchButton.addEventListener('click', function () {
     getApi();
     geoApi();
     getWeather();
-});
+})
 
 btn.addEventListener('click', function () {
     getApi();
     geoApi();
     getWeather();
+})
 // UV Fetch Section
 // let uv = document.querySelector("#UV")
 
@@ -222,9 +223,9 @@ btn.addEventListener('click', function () {
 
 
 // 5 day forecast
-function getWeather(latitude, longitude) {
+function getWeather(latitude, longitude)  {
     cityName = cityText.value
-    const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=09515eadd9b3171770ca63a546779557`;
+    const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=09515eadd9b3171770ca63a546779557`
 
     fetch(requestUrl)
         .then(function (response) {
@@ -284,4 +285,4 @@ function getWeather(latitude, longitude) {
             //Append will attach the element as the bottom most child.
 
         });
-}
+    }
