@@ -151,7 +151,7 @@ function getWeather(latitude, longitude) {
                 let wind = data.list[i].wind.speed;
 
                 let card = document.createElement("div")
-                card.setAttribute("class", "card col")
+                card.setAttribute("class", "card col", "border", "border-dark", "bg-success" )
                 let p_dt = document.createElement("p")
                 let p_temp = document.createElement("p")
                 let p_humidity = document.createElement("p")
