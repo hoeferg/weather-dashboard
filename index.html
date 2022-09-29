@@ -12,35 +12,34 @@
     <title>Weather Dashboard</title>
 </head>
 
-<body>
+<body class = "bg-dark">
     <h1 class="bg-blue text-center">Weather Dashboard</h1>
 
-    <section class="col-6 col-md-4">
-        <h2>Search For a City</h2>
+    <section class="col-6 col-md-4 col-lg-3  col-xlg-3 text-center border bg-info" >
+        <h2 class="text-center ">Search For a City</h2>
         <form id="city-form" method="POST">
             <label for="city-form">Add a City: </label>
             <input type="text" placeholder="Enter city" name="city-text" id="city-text" />
-            <button type="submit" class="fetch-button">Submit</button>
+            <button type="submit" class="fetch-button text-center">Submit</button>
         </form>
 
         <div>
-            <h3 id="city-list">Previous cities searched</h3>
-            <p>No previous searches</p>
+            <h3 id="city-list" class="d-flex flex-column col-4 col-md-3 col-lg-2 col-xlg-2 border text-center">Previous cities searched</h3>
         </div>
     </section>
 
-    <section>
-        <h2 id="city-weather class="custom-h2 col">Current Weather Conditions</h2>
+    <section class ="bg-info">
+        <h2 id="city-weather" class="custom-h2 col border-info">Current Weather Conditions</h2>
         <h3 id="city-name"></h3>
         <p id="date"></p>
-        <p id="temp"> F°</p>
-        <p id="humidity"> %</p>
-        <p id="wind"> MPH</p>
+        <p id="temp"></p>
+        <p id="humidity"></p>
+        <p id="wind"></p>
         <p id="UV"></p>
     </section>
 
     <section>
-        <div class="row pd-2 pt-1">
+        <div class="row pd-2 pt-1 bg-info">
             <h3>Future Forecast</h3>
 
 

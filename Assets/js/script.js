@@ -11,17 +11,13 @@ let temp = document.querySelector("#temp")
 let hum = document.querySelector("#humidity")
 let wind = document.querySelector("#wind")
 let uv = document.querySelector("#UV")
-
 let future = document.querySelector("#future")
-
 let cities = [];
 // Creates cities in list
 
 function renderCities() {
     // clears the cityInput element
     cityText.innerHTML = "";
-
-
 
     // create a new li for each city entry
     for (var i = 0; i < cities.length; i++) {
@@ -62,29 +58,6 @@ function storeCities() {
     localStorage.setItem("cities", JSON.stringify(cities));
 }
 
-// Add submit event to form
-// cityForm.addEventListener("submit", function (event) {
-//     event.preventDefault();
-// console.log("here")
-//     let cityText = document.querySelector("#city-text")
-//     let cityName = cityText.value.trim();
-//     cityName = cityName.toLowerCase();
-
-//     // Return from function early if submitted cityText is blank
-//     if (cityName === "") {
-//         return;
-//     }
-
-//     // Add new cityText to cities array, clear the input
-//     cities.push(cityName);
-//     cityText.value = "";
-
-//     // Store updated cities in localStorage, re-render the list
-//     storeCities();
-//     renderCities();
-// })
-
-
 // Add click event to cityList element
 cityList.addEventListener("click", function (event) {
     let element = event.target;
@@ -104,19 +77,7 @@ cityList.addEventListener("click", function (event) {
 // Calls init to retrieve data and render it to the page on load
 init()
 
-
-
-
-
-
-
-
-
-
-
 // fetch section
-
-
 function getApi(city) {
     let cityName = cityText.value
     const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName||city}&appid=09515eadd9b3171770ca63a546779557&units=imperial`
@@ -131,7 +92,6 @@ function getApi(city) {
             //Using console.log to examine the data
             console.log(data);
 
-
             //Setting the text of the h3 element and p element.
             console.log(data.name)
             date.textContent = data.dt;
@@ -140,18 +100,8 @@ function getApi(city) {
             hum.textContent = data.main.humidity + "%";
             wind.textContent = data.wind.speed + "MPH";
 
-
-            // localStorage.setItem("date", (date.textContent))
-            // localStorage.setItem("cityName", (cityName.textContent));
-            // localStorage.setItem("temp", (temp.textContent));
-            // localStorage.setItem("hum", (hum.textContent));
-            // localStorage.setItem("wind", (wind.textContent));
-            //Append will attach the element as the bottom most child.
-
         })
 }
-
-
 
 function geoApi(city) {
     let cityName = cityText.value
@@ -170,8 +120,6 @@ function geoApi(city) {
             const lon = data[0].lon;
             console.log(lat)
             getWeather(lat, lon)
-
-
         });
 }
 fetchButton.addEventListener('click', function () {
@@ -179,56 +127,6 @@ fetchButton.addEventListener('click', function () {
     geoApi();
 })
 console.log(geoApi)
-
-// Connect the line below to the button of the cities
-// btn.addEventListener('click', function () {
-//     getApi();
-//     geoApi();
-//     getWeather();
-// })
-// UV Fetch Section
-// let uv = document.querySelector("#UV")
-
-
-// function uvIndex() {
-//     var requestUrl = 'https://api.openuv.io/api/v1/uv';
-
-//     fetch(requestUrl)
-//         .then(function (response) {
-//             return response.json();
-//         })
-//         // This returns the info and condenses it into an array with json
-//         .then(function (data) {
-//             //Using console.log to examine the data
-//             console.log(data);
-//             for (var i = 0; i < data.length; i++) {
-//                 //Creating a h3 element and a p element
-//                 let uv = document.createElement('p4');
-
-//                 //Setting the text of the h3 element and p element.
-//                 uv.textContent = data[i].uvIndex;
-
-//                 //Appending the dynamically generated html to the div associated with the id="users"
-//                 //Append will attach the element as the bottom most child.
-//                 usersContainer.append(uv);
-
-//                 if (uv >= 0 && uv <= 2) {
-//                     uv.setAttribute("background-color", "#00D81D", "text", "black")
-//                 } else if (uv >= 3 && uv <= 5) {
-//                     uv.setAttribute("background-color", "#E6F52D", "text", "black")
-//                 } else if (uv >= 6 && uv <= 7) {
-//                     uv.setAttribute("background-color", "#F5912D", "text", "black")
-//                 } else if (uv >= 8 && uv <= 10) {
-//                     uv.setAttribute("background-color", "#F91616 ", "text", "black")
-//                 }
-//             }
-//         }
-//     }
-
-// fetchButton.addEventListener('click', getApi);
-
-
-
 
 // 5 day forecast
 function getWeather(latitude, longitude) {
@@ -270,35 +168,5 @@ function getWeather(latitude, longitude) {
                 card.appendChild(p_wind)
                 future.appendChild(card)
             }
-            // dateFOne.textContent= data.list[1].dt;
-            // tempFOne.textContent = data.list[1].main.temp;
-            // humFOne.textContent = data.list[1].main.humidity;
-            // windFOne.textContent = data.list[1].wind.speed;
-
-
-            //Setting the text of the h3 element and p element.
-
-            // localStorage.setItem('tempFOne', (tempFOne.textContent));
-            // localStorage.setItem('humFOne', (humFOne.textContent));
-            // localStorage.setItem('windFOne', (windFOne.textContent));
-
-            // localStorage.setItem('tempFTwo', (tempFTwo.textContent));
-            // localStorage.setItem('humFTwo', (humFTwo.textContent));
-            // localStorage.setItem('windFTwo', (windFTwo.textContent));
-
-            // localStorage.setItem('tempFThree', (tempFThree.textContent));
-            // localStorage.setItem('humFThree', (humFThree.textContent));
-            // localStorage.setItem('windFThree', (windFThree.textContent));
-
-            // localStorage.setItem('tempFFour', (tempFFour.textContent));
-            // localStorage.setItem('humFFour', (humFFour.textContent));
-            // localStorage.setItem('windFFour', (windFFour.textContent));
-
-            // localStorage.setItem('tempFFive', (tempFFive.textContent));
-            // localStorage.setItem('humFFive', (humFFive.textContent));
-            // localStorage.setItem('windFFive', (windFFive.textContent));
-
-            //Append will attach the element as the bottom most child.
-
         });
 }
