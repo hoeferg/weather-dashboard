@@ -33,9 +33,9 @@ function renderCities() {
 }
 
 function historySearch() {
-console.log(this.dataset.value)
-getApi(this.dataset.value)
-geoApi(this.dataset.value)
+    console.log(this.dataset.value)
+    getApi(this.dataset.value)
+    geoApi(this.dataset.value)
 
 }
 
@@ -80,7 +80,7 @@ init()
 // fetch section
 function getApi(city) {
     let cityName = cityText.value
-    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName||city}&appid=09515eadd9b3171770ca63a546779557&units=imperial`
+    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName || city}&appid=09515eadd9b3171770ca63a546779557&units=imperial`
     console.log(cityName)
     fetch(requestUrl)
         .then(function (response) {
@@ -105,7 +105,7 @@ function getApi(city) {
 
 function geoApi(city) {
     let cityName = cityText.value
-    const requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName||city}&limit=1&appid=09515eadd9b3171770ca63a546779557`
+    const requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName || city}&limit=1&appid=09515eadd9b3171770ca63a546779557`
 
     fetch(requestUrl)
         .then(function (response) {
@@ -122,7 +122,8 @@ function geoApi(city) {
             getWeather(lat, lon)
         });
 }
-fetchButton.addEventListener('click', function () {
+cityForm.addEventListener('submit', function (event) {
+    event.preventDefault();
     getApi();
     geoApi();
 })
@@ -151,12 +152,12 @@ function getWeather(latitude, longitude) {
                 let wind = data.list[i].wind.speed;
 
                 let card = document.createElement("div")
-                card.setAttribute("class", "card col", "border", "border-dark", "bg-success" )
+                card.setAttribute("class", "card col", "border", "border-dark", "bg-success")
                 let p_dt = document.createElement("p")
                 let p_temp = document.createElement("p")
                 let p_humidity = document.createElement("p")
                 let p_wind = document.createElement("p")
-                
+
                 p_dt.textContent = `date: ${dt}`
                 p_temp.textContent = `temp: ${temp}`
                 p_humidity.textContent = `humidity: ${humidity}`
