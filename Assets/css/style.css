@@ -17,3 +17,7 @@ h2 {
     transition: 0.3s;
     padding: 2px 16px;
 }
+
+.p-text{
+    font-size: 15px;
+}

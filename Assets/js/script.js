@@ -17,7 +17,7 @@ let cities = [];
 
 function renderCities() {
     // clears the cityInput element
-    cityText.innerHTML = "";
+    cityList.innerHTML = "";
 
     // create a new li for each city entry
     for (var i = 0; i < cities.length; i++) {
@@ -59,19 +59,16 @@ function storeCities() {
 }
 
 // Add click event to cityList element
-cityList.addEventListener("click", function (event) {
-    let element = event.target;
-
+cityForm.addEventListener("submit", function (event) {
+    event.preventDefault()
+    let city = cityText.value
     // Checks if element is a button
-    if (element.matches("button") === true) {
-        // Get its data-index value and remove the city element from the list
-        var index = element.parentElement.getAttribute("data-index");
-        cities.splice(index, 1);
-
-        // Store updated cities in localStorage, re-render the list
-        storeCities();
-        renderCities();
-    }
+    // Store updated cities in localStorage, re-render the list
+    console.log(city)
+    cities.push(city)
+    renderCities()
+    storeCities()
+    console.log(cities)
 })
 
 // Calls init to retrieve data and render it to the page on load
@@ -93,12 +90,16 @@ function getApi(city) {
             console.log(data);
 
             //Setting the text of the h3 element and p element.
+            let time = data.dt
+            let dateTime = new Date(time*1000).toLocaleDateString("en-us")
+        
+            console.log(dateTime)
             console.log(data.name)
-            date.textContent = data.dt;
+            date.textContent = dateTime;
             $cityName.textContent = data.name;
-            temp.textContent = data.main.temp + "degrees";
-            hum.textContent = data.main.humidity + "%";
-            wind.textContent = data.wind.speed + "MPH";
+            temp.textContent = "Temp: "+data.main.temp + "degrees";
+            hum.textContent = "Humidity: "+data.main.humidity + "%";
+            wind.textContent = "Wind Speed: "+data.wind.speed + "MPH";
 
         })
 }
@@ -152,22 +153,28 @@ function getWeather(latitude, longitude) {
                 let wind = data.list[i].wind.speed;
 
                 let card = document.createElement("div")
-                card.setAttribute("class", "card col", "border", "border-dark", "bg-success")
+                let cardBody = document.createElement("div")
+                card.setAttribute("class", "card col-lg-1")
+                cardBody.setAttribute("class", "card-body")
                 let p_dt = document.createElement("p")
                 let p_temp = document.createElement("p")
                 let p_humidity = document.createElement("p")
                 let p_wind = document.createElement("p")
+
+                p_dt.setAttribute("class", "p-text")
 
                 p_dt.textContent = `date: ${dt}`
                 p_temp.textContent = `temp: ${temp}`
                 p_humidity.textContent = `humidity: ${humidity}`
                 p_wind.textContent = `wind: ${wind}`
 
-                card.appendChild(p_dt)
-                card.appendChild(p_temp)
-                card.appendChild(p_humidity)
-                card.appendChild(p_wind)
+                cardBody.appendChild(p_dt)
+                cardBody.appendChild(p_temp)
+                cardBody.appendChild(p_humidity)
+                cardBody.appendChild(p_wind)
+                card.appendChild(cardBody)
                 future.appendChild(card)
+                
             }
         });
 }
