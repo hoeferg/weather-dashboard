@@ -106,7 +106,7 @@ function getApi(city) {
 
 function geoApi(city) {
     let cityName = cityText.value
-    const requestUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName || city}&limit=1&appid=09515eadd9b3171770ca63a546779557`
+    const requestUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName || city}&limit=1&appid=09515eadd9b3171770ca63a546779557`
 
     fetch(requestUrl)
         .then(function (response) {
