@@ -100,6 +100,7 @@ function getApi(city) {
             temp.textContent = "Temp: "+data.main.temp + "degrees";
             hum.textContent = "Humidity: "+data.main.humidity + "%";
             wind.textContent = "Wind Speed: "+data.wind.speed + "MPH";
+            // icon.textContent= data.weather.0.icon
 
         })
 }
@@ -154,7 +155,7 @@ function getWeather(latitude, longitude) {
 
                 let card = document.createElement("div")
                 let cardBody = document.createElement("div")
-                card.setAttribute("class", "card col-lg-1")
+                card.setAttribute("class", "card col-12 my-2")
                 cardBody.setAttribute("class", "card-body")
                 let p_dt = document.createElement("p")
                 let p_temp = document.createElement("p")

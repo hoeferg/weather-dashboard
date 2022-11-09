@@ -14,42 +14,45 @@
 </head>
 
 <body class="bg-danger">
-    <div>
-        <h1 class="">Weather Dashboard</h1>
+    <main class="container">
+        <div class="row">
+            <h1 class="text-center mt-5">Weather Dashboard</h1>
 
-        <section class="my-5">
-            <h2 class="">Search For a City</h2>
-            <form id="city-form">
-                <label for="city-form">Add a City: </label>
-                <input class="m-2" type="text" placeholder="Enter city" name="city-text" id="city-text" />
-                <button type="submit" class="fetch-button">Submit</button>
-            </form>
-        </section>
-    </div>
-    
-    <div class="">
-        <h3 id="city-list" class="">Previous cities searched</h3>
-    </div>
-    
-    <div class="row container mx-auto">
+            <section class="my-5  col">
+                <h2 class="">Search For a City</h2>
+                <form id="city-form">
+                    <label for="city-form">Add a City: </label>
+                    <input class="m-2" type="text" placeholder="Enter city" name="city-text" id="city-text" />
+                    <button type="submit" class="fetch-button">Submit</button>
+                </form>
+            </section>
+
+<div class="col"></div>
+
+            <section class="col-6  mt-5 card-body bg-info container">
+                <h2 id="city-weather" class="text-center">Current Weather Conditions</h2>
+                <div class="container">
+                <h3 id="city-name"></h3>
+                <p id="date"></p>
+                <p id="temp"></p>
+                <p id="humidity"></p>
+                <p id="wind"></p>
+                <p id="icon"></p>
+                <p id="UV"></p>
+                </div>
+            </section>
+
+
+            <h3 id="city-list" class="">Previous cities searched</h3>
+        </div>
         <section class="col">
-            <h2 id="city-weather" class="">Current Weather Conditions</h2>
-            <h3 id="city-name"></h3>
-            <p id="date"></p>
-            <p id="temp"></p>
-            <p id="humidity"></p>
-            <p id="wind"></p>
-            <p id="UV"></p>
-        </section>
-
-        <section>
-            <div class="col-2">
-                <h3>Future Forecast</h3>
+            <div>
+                <h3 class="text-center">Future Forecast</h3>
                 <div id="future" class="">
                 </div>
             </div>
         </section>
-    </div>
+    </main>
 </body>
 
 </html>
