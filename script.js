@@ -6,6 +6,7 @@ const cityForm = document.querySelector("#city-form");
 const date = document.querySelector("#date")
 const cityWeather = document.querySelector("#city-weather")
 const fetchButton = document.querySelector(".fetch-button");
+const instructions = document.querySelector("#instructions")
 let $cityName = document.querySelector("#city-name")
 let temp = document.querySelector("#temp")
 let hum = document.querySelector("#humidity")
@@ -14,6 +15,7 @@ let uv = document.querySelector("#UV")
 let future = document.querySelector("#future")
 let cities = [];
 // Creates cities in list
+
 
 function renderCities() {
     // clears the cityInput element
@@ -95,13 +97,13 @@ function getApi(city) {
         
             console.log(dateTime)
             console.log(data.name)
+            instructions.getAttribute("display", "none")
             date.textContent = dateTime;
             $cityName.textContent = data.name;
             temp.textContent = "Temp: "+data.main.temp + "degrees";
             hum.textContent = "Humidity: "+data.main.humidity + "%";
             wind.textContent = "Wind Speed: "+data.wind.speed + "MPH";
             // icon.textContent= data.weather.0.icon
-
         })
 }
 
