@@ -2,6 +2,7 @@ body {
     background-image: url("../assets/images/surface-g09b7c81f7_1920.jpg");
     background-size: cover;
     background-position: center;
+    background-repeat: none;
 }
 
 section {
