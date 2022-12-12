@@ -97,7 +97,7 @@ function getApi(city) {
         
             console.log(dateTime)
             console.log(data.name)
-            instructions.getAttribute("display", "none")
+            // instructions.getAttribute("display", "none")
             date.textContent = dateTime;
             $cityName.textContent = data.name;
             temp.textContent = "Temp: "+data.main.temp + "degrees";
@@ -131,7 +131,7 @@ cityForm.addEventListener('submit', function (event) {
     getApi();
     geoApi();
 })
-console.log(geoApi)
+
 
 // 5 day forecast
 function getWeather(latitude, longitude) {
