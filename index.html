@@ -13,9 +13,9 @@
 <body>
     <main class="container ">
         <div class="row ">
-            <h1 class="text-center mt-5">Weather Dashboard</h1>
+            <h1 class="text-center mt-5 bg-secondary bg-gradient">Weather Dashboard</h1>
 
-            <section class="my-5 text-center border col">
+            <section class="my-5 text-center border col bg-secondary bg-gradient">
                 <h2>Search For a City</h2>
                 <form id="city-form">
                     <input class="m-2" type="text" placeholder="Enter city" name="city-text" id="city-text" />
@@ -23,29 +23,29 @@
                 </form>
             </section>
 
-<div class="col"></div>
+            <div class="col"></div>
 
-            <section class="col-6  mt-5 card-body border container text-center">
-                <h2 id="city-weather" class="text-center">Current Weather Conditions</h2>
+            <section class="weather col-6  mt-5 card-body border container text-center">
+                <h2 id="city-weather" class="text-center bg-secondary bg-gradient">Current Weather Conditions</h2>
                 <div class="container">
-                <!-- <h3 id="instructions">Search for a city to see the information here!</h3>     -->
-                <h3 id="city-name"></h3>
-                <p id="date"></p>
-                <p id="temp"></p>
-                <p id="humidity"></p>
-                <p id="wind"></p>
-                <p id="icon"></p>
-                <p id="UV"></p>
+                    <!-- <h3 id="instructions">Search for a city to see the information here!</h3>     -->
+                    <h3 id="city-name"></h3>
+                    <p id="date"></p>
+                    <p id="temp"></p>
+                    <p id="humidity"></p>
+                    <p id="wind"></p>
+                    <p id="icon"></p>
+                    <p id="UV"></p>
                 </div>
             </section>
 
 
             <h3 id="city-list" class="">Previous cities searched</h3>
         </div>
-        <section class="col border">
-            <div>
+        <section id="future" class="col border card text-white bg-secondary mb-3">
+            <div class="bg-secondary bg-gradient">
                 <h3 class="text-center ">Future Forecast</h3>
-                <div id="future" class="">
+                <div>
                 </div>
             </div>
         </section>

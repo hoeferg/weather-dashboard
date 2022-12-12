@@ -6,9 +6,23 @@ body {
 }
 
 section {
-    background-color: lightblue;
+    background-color: rgb(50, 50, 66);
+    color: white;
 }
 
-h1 {
-    background-color: lightblue;
+
+main {
+    color: white;
 }
+
+div {
+    background-color: rgb(50, 50, 66);
+    color: white;
+}
+
+button {
+    background-color: rgb(2, 120, 194);
+    color: white;
+    border-radius: 50%;
+}
+

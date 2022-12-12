@@ -166,10 +166,10 @@ function getWeather(latitude, longitude) {
 
                 p_dt.setAttribute("class", "p-text")
 
-                p_dt.textContent = `date: ${dt}`
-                p_temp.textContent = `temp: ${temp}`
-                p_humidity.textContent = `humidity: ${humidity}`
-                p_wind.textContent = `wind: ${wind}`
+                p_dt.textContent = `Date: ${dt}`
+                p_temp.textContent = `Temp: ${temp}°F`
+                p_humidity.textContent = `Humidity: ${humidity}%`
+                p_wind.textContent = `Wind: ${wind}MPH`
 
                 cardBody.appendChild(p_dt)
                 cardBody.appendChild(p_temp)
