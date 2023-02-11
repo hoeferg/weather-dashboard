@@ -1,4 +1,4 @@
-# 06 Server-Side APIs: Weather Dashboard
+# Weather Dashboard
 
 ## Description
 
@@ -15,10 +15,28 @@ In the cities entry box put a city that you would like to know the weather of. F
 
 <img src="weather.png">
 
+## Installation
 
-## Credits
 
-N/A
+1. Clone the repo
+   ```sh
+   git clone [https://github.com/hoeferg/GaylePortfolio](https://github.com/hoeferg/weather-dashboard)
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Start the application
+   ```sh
+   npm start
+
 
 ## License
-N/A
+
+No license
+
+---
+
+## Contact
+Gayle Hoefer - [LinkedIn](https://www.linkedin.com/in/gayle-hoefer-61a2a3124/) - [Github](https://github.com/hoeferg)
+
