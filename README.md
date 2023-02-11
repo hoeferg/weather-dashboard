@@ -13,7 +13,8 @@ Website URL: https://hoeferg.github.io/weather-dashboard/
 
 In the cities entry box put a city that you would like to know the weather of. From there the current weather information and future weather information will display. If you would like to view a previous city click on the button of the city below.
 
-![screenshot](./assets/images/weather.png)
+<img src="weather.png">
+
 
 ## Credits
 
